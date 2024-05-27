@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {ThemeContext} from "../context/ThemeContext.jsx";
 
 const CountryCard = ({ country }) => {
+    const {theme} = useContext(ThemeContext);
     if (!country || !country.flags) {
         return <div>Loading...</div>;
     }
@@ -11,28 +13,33 @@ const CountryCard = ({ country }) => {
     const borders = country.borders ? country.borders.join(', ') : "No borders";
 
     return (
-        <div className="flex flex-col w-full bg-white rounded-xl shadow-lg">
-            <div className="h-40 flex justify-center items-center overflow-hidden">
+
+        <div className="flex flex-col w-full bg-white rounded-xl overflow-hidden">
+            <div className=" flex justify-center items-center overflow-hidden">
                 <img
                     src={country.flags.svg}
                     alt={`Flag of ${country.name.common}`}
                     className="h-full object-contain"
                 />
             </div>
-            <div className="p-4">
+            <div className={`p-4 ${
+                theme === "light"
+                    ? "text-very-dark-blue-(light-mode-text)"
+                    : "text-white-(dark-mode-text)"
+            }`}>
                 <h2 className="text-lg font-extrabold ">{country.name.common}</h2>
                 <div className="mt-2">
                     {/*<p>*/}
                     {/*    <span className="font-semibold">Native name:</span> {country.name.official}*/}
                     {/*</p>*/}
                     <p>
-                        <span className="font-semibold">Population:</span> {country.population.toLocaleString()}
+                        <span className="">Population:</span> {country.population.toLocaleString()}
                     </p>
                     <p>
-                        <span className="font-semibold">Region:</span> {country.subregion}
+                        <span className="">Region:</span> {country.subregion}
                     </p>
                     <p>
-                        <span className="font-semibold">Capital:</span> {country.capital}
+                        <span className="">Capital:</span> {country.capital}
                     </p>
                     {/*<p>*/}
                     {/*    <span className="font-semibold">Top Level Domains:</span> {topLevelDomains}*/}

@@ -27,7 +27,7 @@ const Dropdown = ({ options, onSelect }) => {
             >
                 {selectedOption || "Filter by Region"}{" "}
                 <svg
-                    className="-mr-5 ml-10 h-5 w-5 pl-2"
+                    className="-mr-5 ml-10 pl-2 h-full w-8"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"

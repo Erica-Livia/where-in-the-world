@@ -1,23 +1,26 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [ "./index.html", "./src/**/*.{js,jsx,ts,tsx}",],
-  theme: {
-    colors:{
-      'light-blue':'#0079FF',
-      'c-gray':'#697c9A',
-      'c-light-gray': '#4B6A9B',
-      'c-dark':'#2B3442',
-       'c-white':'#FFFFFF',
-       'm-dark':'#1E2A47',
-       'd-dark':'#141D2F',
-       'light-bg':'#F6F8FF',
-
+    content: ["./index.html", "./src/**/*.{jsx, js,ts, tsx}"],
+    theme: {
+        colors: {
+            "dark-blue-(dark-mode-elements)": "hsl(209, 23%, 22%)",
+            "very-dark-blue-(dark-mode-background)": "hsl(207, 26%, 17%)",
+            "very-dark-blue-(light-mode-text)": "hsl(200, 15%, 8%)",
+            "dark-gray-(light-mode-input)": "hsl(0, 0%, 52%)",
+            "very-light-gray-(light-mode-background)": "hsl(0, 0%, 98%)",
+            "white-(dark-mode-text)": "hsl(0, 0%, 100%)",
+            "light-mode-elements": "hsl(0, 0%, 100%)",
+        },
+        extend: {
+            fontFamily: {
+                sans: ["Nunito Sans", "sans-serif"],
+            },
+            fontWeight: {
+                light: 300,
+                semibold: 600,
+                extrabold: 800,
+            },
+        },
     },
-    extend: {},
-    fontFamily:{
-      spacemono:['Space Mono','monospace']
-    }
-  },
-  plugins: [],
-}
-
+    plugins: [],
+};

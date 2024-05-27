@@ -5,8 +5,8 @@ import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import { ThemeContext } from './context/ThemeContext';
 import { getAllCountries } from './context/countryService';
-import Result from './components/Result';
-import { CountryContext } from './context/CountryContext';
+import Result from "./components/Result.jsx";
+import {CountryProvider} from "./context/CountryContext.jsx";
 
 function App() {
     const { theme } = useContext(ThemeContext);
@@ -30,6 +30,10 @@ function App() {
         fetchCountries();
     }, []);
 
+    const handleBack = () => {
+        setSelectedCountry(null);
+    };
+
     if (loading) return <div>Loading...</div>;
     if (error) return (
         <div>
@@ -40,14 +44,22 @@ function App() {
     );
 
     return (
-        <CountryContext.Provider value={{ countryData: countries, error }}>
-            <div className={`${theme === 'light' ? 'bg-light-bg' : 'bg-d-dark'} flex flex-col justify-center items-center p-[1rem]`}>
-                <Header />
-                <SearchBar />
-                <Result onCountryClick={setSelectedCountry} />
-                {selectedCountry && <CountryDetail country={selectedCountry} />}
-            </div>
-        </CountryContext.Provider>
+        <CountryProvider>
+        <div
+            className={`${
+                theme === "light"
+                    ? "bg-white text-very-dark-blue-(light-mode-text)"
+                    : "bg-dark-blue-(dark-mode-elements) text-white-(dark-mode-text)"
+            } flex flex-col justify-center items-center p-[1rem] min-h-screen`}>
+            <Header />
+            {!selectedCountry && <SearchBar />}
+            {!selectedCountry ? (
+                <Result countries={countries} onCountryClick={setSelectedCountry} />
+            ) : (
+                <CountryDetail country={selectedCountry} onBack={handleBack} />
+            )}
+        </div>
+        </CountryProvider>
     );
 }
 
