@@ -2,8 +2,19 @@ import React, { useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 import CountryCard from './CountryCard';
 
-const Result = ({ countries, onCountryClick }) => {
+const Result = ({ countries, error, onCountryClick }) => {
     const { theme } = useContext(ThemeContext);
+
+    if (error) {
+        return (
+            <div>
+                Error loading countries data: {error.message}
+                <br />
+                Please check the console for more details.
+            </div>
+        );
+    }
+
 
     if (!Array.isArray(countries) || countries.length === 0) {
         return <div>No data available</div>;

@@ -6,7 +6,7 @@ import SearchBar from './components/SearchBar';
 import { ThemeContext } from './context/ThemeContext';
 import { getAllCountries } from './context/countryService';
 import Result from "./components/Result.jsx";
-import {CountryProvider} from "./context/CountryContext.jsx";
+import { CountryProvider } from "./context/CountryContext.jsx";
 
 function App() {
     const { theme } = useContext(ThemeContext);
@@ -35,30 +35,24 @@ function App() {
     };
 
     if (loading) return <div>Loading...</div>;
-    if (error) return (
-        <div>
-            Error loading countries data: {error.message}
-            <br />
-            Please check the console for more details.
-        </div>
-    );
 
     return (
         <CountryProvider>
-        <div
-            className={`${
-                theme === "light"
-                    ? "bg-white text-very-dark-blue-(light-mode-text)"
-                    : "bg-dark-blue-(dark-mode-elements) text-white-(dark-mode-text)"
-            } flex flex-col justify-center items-center p-[1rem] min-h-screen`}>
-            <Header />
-            {!selectedCountry && <SearchBar />}
-            {!selectedCountry ? (
-                <Result countries={countries} onCountryClick={setSelectedCountry} />
-            ) : (
-                <CountryDetail country={selectedCountry} onBack={handleBack} />
-            )}
-        </div>
+            <div
+                className={`${
+                    theme === "light"
+                        ? "bg-white text-very-dark-blue-(light-mode-text)"
+                        : "bg-dark-blue-(dark-mode-elements) text-white-(dark-mode-text)"
+                } flex flex-col justify-center items-center p-[1rem] min-h-screen`}
+            >
+                <Header />
+                {!selectedCountry && <SearchBar />}
+                {!selectedCountry ? (
+                    <Result countries={countries} error={error} onCountryClick={setSelectedCountry} />
+                ) : (
+                    <CountryDetail country={selectedCountry} onBack={handleBack} />
+                )}
+            </div>
         </CountryProvider>
     );
 }
