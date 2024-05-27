@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://restcountries.com/v3.1';
+const BASE_URL = '/api';
 
 export const getAllCountries = async () => {
     try {
