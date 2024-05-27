@@ -1,23 +1,43 @@
-import React from 'react'
-import {  IoMoonSharp } from "react-icons/io5";
+import { IoMoonSharp } from "react-icons/io5";
 import { MdSunny } from "react-icons/md";
 import { useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext";
+import { ThemeContext } from "../context/ThemeContext.jsx";
 
 const Header = () => {
-    const {theme,toggleTheme}=useContext(ThemeContext)
-  return (
-    <header className=" w-full md:w-[60%] lg:w-[45%] flex justify-between">
-        <h1 className={` text-lg font-bold text-${theme==='light'?'d-dark':'c-white'} `}>Where in the World?</h1>
-        <div onClick={toggleTheme} className=" cursor-pointer ">
-        {
-          theme ==='light'?
-          <span className="flex items-center gap-2 text-c-light-gray "> <span> Dark</span> < IoMoonSharp /> </span>
-          :<span className="flex items-center gap-2 text-c-white "> <span>Light</span> <MdSunny  />  </span> 
-        }
-        </div>
-    </header>
-  )
-}
+    const { theme, toggleTheme } = useContext(ThemeContext);
 
-export default Header
+    return (
+        <header
+            className={`fixed top-0 left-0 right-0 w-full flex justify-between p-5 md:pl-10 md:pr-10 ${
+                theme === "light"
+                    ? "bg-white-(dark-mode-text)"
+                    : "bg-dark-blue-(dark-mode-elements)"
+            }`}
+        >
+            <h1
+                className={`text-lg font-bold ${
+                    theme === "light"
+                        ? "text-very-dark-blue-(light-mode-text)"
+                        : "text-white-(dark-mode-text)"
+                }`}
+            >
+                Where in the world?
+            </h1>
+
+            <div onClick={toggleTheme}>
+                {theme === "light" ? (
+                    <span className="flex items-center gap-2 text-very-dark-blue-(light-mode-text)">
+            <MdSunny /> <span className="text-sm">Light</span>
+          </span>
+                ) : (
+                    <span className="flex items-center gap-2 text-white-(dark-mode-text)">
+            <IoMoonSharp />
+            <span className="text-sm"> Dark</span>
+          </span>
+                )}
+            </div>
+        </header>
+    );
+};
+
+export default Header;
