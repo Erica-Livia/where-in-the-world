@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { IoIosArrowRoundBack } from "react-icons/io";
+import themeContext, {ThemeContext} from "../context/ThemeContext.jsx";
+
 
 const CountryDetail = ({ country, onBack }) => {
     if (!country) {
@@ -8,6 +10,7 @@ const CountryDetail = ({ country, onBack }) => {
 
     console.log('Country details:', country);
 
+    const { theme } = useContext(ThemeContext);
     const currencies = country.currencies ? Object.values(country.currencies).map(currency => currency.name).join(", ") : "No currencies available";
     const languages = country.languages ? Object.values(country.languages).join(", ") : "No languages available";
     const topLevelDomains = country.tld ? country.tld.join(', ') : "No TLDs available";
@@ -15,7 +18,15 @@ const CountryDetail = ({ country, onBack }) => {
 
     return (
         <div className="w-full grid mx-auto">
-            <button className="pb-20 flex items-center space-x-2" onClick={onBack}><IoIosArrowRoundBack/> Back</button>
+            <button
+                    className={`${
+                        theme === "light"
+                        ? "mb-20 flex items-center space-x-2 bg-[white] w-fit px-8 py-2 rounded shadow-lg"
+                            : "mb-20 flex items-center space-x-2 bg-darkBlue w-fit px-8 py-2 rounded"
+                    }`}
+                    onClick={onBack}>
+                <IoIosArrowRoundBack/> Back
+            </button>
             <div className="flex justify-between items-center w-full h-full md:mx-20">
                 <div className="flex flex-col md:flex-row">
                     {country.flags && (
