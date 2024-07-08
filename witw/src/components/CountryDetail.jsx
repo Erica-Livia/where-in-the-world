@@ -21,8 +21,8 @@ const CountryDetail = ({ country, onBack }) => {
             <button
                     className={`${
                         theme === "light"
-                        ? "mb-20 flex items-center space-x-2 bg-[white] w-fit px-8 py-2 rounded shadow-lg"
-                            : "mb-20 flex items-center space-x-2 bg-darkBlue w-fit px-8 py-2 rounded"
+                        ? "my-20 flex items-center space-x-2 bg-[white] w-fit px-8 py-2 rounded shadow-lg"
+                            : "my-20 flex items-center space-x-2 bg-darkBlue w-fit px-8 py-2 rounded"
                     }`}
                     onClick={onBack}>
                 <IoIosArrowRoundBack/> Back
