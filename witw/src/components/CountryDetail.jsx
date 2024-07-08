@@ -27,7 +27,7 @@ const CountryDetail = ({ country, onBack }) => {
                     onClick={onBack}>
                 <IoIosArrowRoundBack/> Back
             </button>
-            <div className="flex justify-center items-center w-full h-full mx-0 md:mx-20">
+            <div className="flex justify-center items-center w-full h-full px-0 md:px-20">
                 <div className="flex flex-col md:flex-row">
                     {country.flags && (
                         <div className="flex-shrink-0 md:w-1/3">
@@ -38,10 +38,10 @@ const CountryDetail = ({ country, onBack }) => {
                             />
                         </div>
                     )}
-                    <div className="md:ml-32 flex-grow">
+                    <div className="md:ml-20 flex-grow">
                         <div><h1 className="text-3xl font-extrabold pb-8">{country.name.common}</h1>
                         </div>
-                        <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-x-20 pb-8">
+                        <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-x-12 pb-8">
                         <div>
                                 <p>
                                     <span className="font-extraBold">Native name:</span> {country.name.official}
