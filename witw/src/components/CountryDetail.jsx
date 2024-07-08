@@ -17,7 +17,7 @@ const CountryDetail = ({ country, onBack }) => {
     const borders = country.borders ? country.borders.join(', ') : "No borders";
 
     return (
-        <div className="w-full grid mx-auto">
+        <div className="w-full grid mx-0 md:mx-auto">
             <button
                     className={`${
                         theme === "light"
@@ -27,14 +27,14 @@ const CountryDetail = ({ country, onBack }) => {
                     onClick={onBack}>
                 <IoIosArrowRoundBack/> Back
             </button>
-            <div className="flex justify-between items-center w-full h-full md:mx-20">
+            <div className="flex justify-center items-center w-full h-full mx-0 md:mx-20">
                 <div className="flex flex-col md:flex-row">
                     {country.flags && (
                         <div className="flex-shrink-0 md:w-1/3">
                             <img
                                 src={country.flags.svg}
                                 alt={`Flag of ${country.name.common}`}
-                                className="h-full md:h-full object-cover mb-4 md:mb-0 rounded-md"
+                                className="h-full w-full md:h-full mb-4 md:mb-0 rounded-md"
                             />
                         </div>
                     )}
