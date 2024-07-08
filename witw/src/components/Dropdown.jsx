@@ -15,7 +15,7 @@ const Dropdown = ({ options, onSelect }) => {
     };
 
     return (
-        <div>
+        <div className="items-center">
             <button
                 type="button"
                 className={`${
@@ -46,8 +46,8 @@ const Dropdown = ({ options, onSelect }) => {
                     className={`${
                         theme === "light"
                             ? "bg-lightGray text-very-dark-blue-(light-mode-text)"
-                            : "bg-dark-blue-(dark-mode-elements) text-white-(dark-mode-text)"
-                    } origin-top-right absolute mt-2 w-40 rounded-md pl-2 pr-[12rem]`}
+                            : "bg-darkBlue text-white-(dark-mode-text)"
+                    } origin-top-right absolute w-40 rounded-md pl-2 pr-[12rem]`}
                 >
                     <div className="py-1 text-sm">
                         {options.map((option) => (
