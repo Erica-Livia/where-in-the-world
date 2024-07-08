@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoIosArrowRoundBack } from "react-icons/io";
 
 const CountryDetail = ({ country, onBack }) => {
     if (!country) {
@@ -13,51 +14,58 @@ const CountryDetail = ({ country, onBack }) => {
     const borders = country.borders ? country.borders.join(', ') : "No borders";
 
     return (
-        <div className="w-full max-w-3xl">
-            <button className="pt-1" onClick={onBack}>Back</button>
-            <div className="flex flex-col justify-center items-center w-full h-full">
+        <div className="w-full grid mx-auto">
+            <button className="pb-20 flex items-center space-x-2" onClick={onBack}><IoIosArrowRoundBack/> Back</button>
+            <div className="flex justify-between items-center w-full h-full md:mx-20">
                 <div className="flex flex-col md:flex-row">
                     {country.flags && (
-                        <div className="flex-shrink-0 md:w-2/3">
+                        <div className="flex-shrink-0 md:w-1/3">
                             <img
                                 src={country.flags.svg}
                                 alt={`Flag of ${country.name.common}`}
-                                className="w-full h-40 md:h-full object-cover mb-4 md:mb-0"
+                                className="h-full md:h-full object-cover mb-4 md:mb-0 rounded-md"
                             />
                         </div>
                     )}
-                    <div className="md:ml-8 flex-grow">
-                        <h1 className="text-lg font-extrabold">{country.name.common}</h1>
-                        <div className="mt-2">
-                            <p>
-                                <span className="font-semibold">Native name:</span> {country.name.official}
-                            </p>
-                            <p>
-                                <span className="font-semibold">Population:</span> {country.population.toLocaleString()}
-                            </p>
-                            <p>
-                                <span className="font-semibold">Sub Region:</span> {country.subregion}
-                            </p>
-                            <p>
-                                <span className="font-semibold">Capital:</span> {country.capital}
-                            </p>
-                            <div>
+                    <div className="md:ml-32 flex-grow">
+                        <div><h1 className="text-3xl font-extrabold pb-8">{country.name.common}</h1>
+                        </div>
+                        <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-x-20 pb-8">
+                        <div>
                                 <p>
-                                    <span className="font-semibold">Top Level Domains:</span> {topLevelDomains}
+                                    <span className="font-extraBold">Native name:</span> {country.name.official}
                                 </p>
                                 <p>
-                                    <span className="font-semibold">Currencies:</span> {currencies}
+                                    <span
+                                        className="font-extraBold">Population:</span> {country.population.toLocaleString()}
                                 </p>
                                 <p>
-                                    <span className="font-semibold">Languages:</span> {languages}
+                                    <span className="font-extraBold">Sub Region:</span> {country.subregion}
+                                </p>
+                                <p>
+                                    <span className="font-extraBold">Continent:</span> {country.continents}
+                                </p>
+                                <p>
+                                    <span className="font-extraBold">Capital:</span> {country.capital}
                                 </p>
                             </div>
                             <div>
-                                <h2 className="font-semibold">Border countries:</h2>
-                                <p>{borders}</p>
+                                <p>
+                                    <span className="font-extraBold">Top Level Domains:</span> {topLevelDomains}
+                                </p>
+                                <p>
+                                    <span className="font-extraBold">Currencies:</span> {currencies}
+                                </p>
+                                <p>
+                                    <span className="font-extraBold">Languages:</span> {languages}
+                                </p>
+
                             </div>
                         </div>
+                        <div><h2 className="font-extraBold">Border countries:</h2>
+                            <p>{borders}</p></div>
                     </div>
+
                 </div>
             </div>
         </div>

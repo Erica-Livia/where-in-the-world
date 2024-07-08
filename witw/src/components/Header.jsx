@@ -8,10 +8,10 @@ const Header = () => {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 border-b-2 w-full flex justify-between p-5 md:pl-10 md:pr-10 ${
+            className={`fixed top-0 left-0 right-0 w-full flex justify-between p-5 md:pl-10 md:pr-10 ${
                 theme === "light"
-                    ? "bg-white-(dark-mode-text)"
-                    : "bg-dark-blue-(dark-mode-elements)"
+                    ? "bg-white-(dark-mode-text) shadow"
+                    : "bg-darkBlue"
             }`}
         >
             <h1
@@ -36,6 +36,7 @@ const Header = () => {
           </span>
                 )}
             </div>
+
         </header>
     );
 };

@@ -15,7 +15,6 @@ const Result = ({ countries, error, onCountryClick }) => {
         );
     }
 
-
     if (!Array.isArray(countries) || countries.length === 0) {
         return <div>No data available</div>;
     }
@@ -26,13 +25,13 @@ const Result = ({ countries, error, onCountryClick }) => {
                 <div
                     key={country.cca3}
                     className={`rounded cursor-pointer mx-10 pb-5 md:mx-[0.25rem]  ${
-                        theme === "light"
-                            ? "bg-white-(dark-mode-text)"
-                            : "bg-dark-blue-(dark-mode-elements)"
+                        theme === 'light'
+                            ? 'bg-white-(dark-mode-text)'
+                            : 'bg-dark-blue-(dark-mode-elements)'
                     }`}
                     onClick={() => onCountryClick(country)}
                 >
-                    <CountryCard country={country}/>
+                    <CountryCard country={country} />
                 </div>
             ))}
         </div>

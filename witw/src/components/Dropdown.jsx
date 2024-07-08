@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { ThemeContext} from "../context/ThemeContext.jsx";
+import { ThemeContext } from "../context/ThemeContext.jsx";
 
 const Dropdown = ({ options, onSelect }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -20,8 +20,8 @@ const Dropdown = ({ options, onSelect }) => {
                 type="button"
                 className={`${
                     theme === "light"
-                        ? "bg-very-light-gray-(light-mode-background) text-very-dark-blue-(light-mode-text)"
-                        : "bg-dark-blue-(dark-mode-elements)  text-white-(dark-mode-text)"
+                        ? "bg-[white] text-very-dark-blue-(light-mode-text) shadow"
+                        : "bg-darkBlue text-white-(dark-mode-text)"
                 } my-1 text-sm mr-30 inline-flex justify-center rounded-md pl-5 pr-10 py-3 font-medium hover:bg-gray-50 focus:outline-none md:my-3`}
                 onClick={() => setIsOpen(!isOpen)}
             >
@@ -45,15 +45,15 @@ const Dropdown = ({ options, onSelect }) => {
                 <div
                     className={`${
                         theme === "light"
-                            ? "bg-very-light-gray-(light-mode-background)  text-very-dark-blue-(light-mode-text)"
-                            : "bg-dark-blue-(dark-mode-elements)  text-white-(dark-mode-text)"
+                            ? "bg-lightGray text-very-dark-blue-(light-mode-text)"
+                            : "bg-dark-blue-(dark-mode-elements) text-white-(dark-mode-text)"
                     } origin-top-right absolute mt-2 w-40 rounded-md pl-2 pr-[12rem]`}
                 >
                     <div className="py-1 text-sm">
                         {options.map((option) => (
                             <button
                                 key={option}
-                                className="block px-4 py-1  w-full text-left"
+                                className="block px-4 py-1 w-full text-left"
                                 onClick={() => handleOptionClick(option)}
                             >
                                 {option}

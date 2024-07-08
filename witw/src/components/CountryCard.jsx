@@ -7,19 +7,18 @@ const CountryCard = ({ country }) => {
         return <div>Loading...</div>;
     }
 
-    const currencies = country.currencies ? Object.values(country.currencies).map(currency => currency.name).join(", ") : "No currencies available";
-    const languages = country.languages ? Object.values(country.languages).join(", ") : "No languages available";
-    const topLevelDomains = country.tld ? country.tld.join(', ') : "No TLDs available";
-    const borders = country.borders ? country.borders.join(', ') : "No borders";
-
     return (
 
-        <div className="flex flex-col w-full bg-white rounded-xl overflow-hidden">
-            <div className=" flex justify-center items-center overflow-hidden">
+        <div
+        className={`${ 
+            theme === "light" 
+            ? "bg-[white] flex flex-col w-full h-full bg-white-900 rounded-md overflow-hidden shadow" 
+            : "bg-darkBlue flex flex-col w-full h-full bg-white-900 rounded-md overflow-hidden shadow"}`}>
+            <div className="">
                 <img
                     src={country.flags.svg}
                     alt={`Flag of ${country.name.common}`}
-                    className="h-full object-contain"
+                    className="h-full w-full"
                 />
             </div>
             <div className={`p-4 ${
@@ -29,9 +28,6 @@ const CountryCard = ({ country }) => {
             }`}>
                 <h2 className="text-lg font-extrabold ">{country.name.common}</h2>
                 <div className="mt-2">
-                    {/*<p>*/}
-                    {/*    <span className="font-semibold">Native name:</span> {country.name.official}*/}
-                    {/*</p>*/}
                     <p>
                         <span className="">Population:</span> {country.population.toLocaleString()}
                     </p>
@@ -41,18 +37,7 @@ const CountryCard = ({ country }) => {
                     <p>
                         <span className="">Capital:</span> {country.capital}
                     </p>
-                    {/*<p>*/}
-                    {/*    <span className="font-semibold">Top Level Domains:</span> {topLevelDomains}*/}
-                    {/*</p>*/}
-                    {/*<p>*/}
-                    {/*    <span className="font-semibold">Currencies:</span> {currencies}*/}
-                    {/*</p>*/}
-                    {/*<p>*/}
-                    {/*    <span className="font-semibold">Languages:</span> {languages}*/}
-                    {/*</p>*/}
-                    {/*<p>*/}
-                    {/*    <span className="font-semibold">Border countries:</span> {borders}*/}
-                    {/*</p>*/}
+
                 </div>
             </div>
         </div>

@@ -3,13 +3,14 @@ export default {
     content: ["./index.html", "./src/**/*.{jsx, js,ts, tsx}"],
     theme: {
         colors: {
-            "dark-blue-(dark-mode-elements)": "hsl(209, 23%, 22%)",
-            "very-dark-blue-(dark-mode-background)": "hsl(207, 26%, 17%)",
-            "very-dark-blue-(light-mode-text)": "hsl(200, 15%, 8%)",
+            "dark-blue-(dark-mode-elements)": "#2B3844",
+            "darkBlue" : "#3b4c5e",
+            "very-dark-blue-(dark-mode-background)": "#202C36",
             "dark-gray-(light-mode-input)": "hsl(0, 0%, 52%)",
-            "very-light-gray-(light-mode-background)": "hsl(0, 0%, 98%)",
-            "white-(dark-mode-text)": "hsl(0, 0%, 100%)",
-            "light-mode-elements": "hsl(0, 0%, 100%)",
+            "lightGray": "#FAFAFA",
+            "white-(dark-mode-text)": "#FFFFFF",
+            "light-mode-elements": "#FFFFFF",
+            "darkWhite" : "#F2F2F2",
         },
         extend: {
             fontFamily: {
@@ -18,7 +19,7 @@ export default {
             fontWeight: {
                 light: 300,
                 semibold: 600,
-                extrabold: 800,
+                extraBold: 800,
             },
         },
     },

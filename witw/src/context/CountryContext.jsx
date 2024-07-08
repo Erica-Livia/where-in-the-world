@@ -1,6 +1,5 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import { getAllCountries } from './countryService';
-import countryDetail from "../components/CountryDetail.jsx";
 
 export const CountryContext = createContext();
 
@@ -14,6 +13,7 @@ export const CountryProvider = ({ children }) => {
         const fetchCountries = async () => {
             try {
                 const data = await getAllCountries();
+                console.log('Fetched Countries Data:', data);  // Log fetched data
                 setCountryData(data);
                 setFilteredCountries(data);
                 setLoading(false);
@@ -26,33 +26,26 @@ export const CountryProvider = ({ children }) => {
         fetchCountries();
     }, []);
 
-    const searchCountry = async (query) => {
-        try {
-            if (!query) {
-                setFilteredCountries(countryData);
-            } else {
-                const filtered = countryData.filter(country =>
-                    country.name.common.toLowerCase().includes(query.toLowerCase())
-                );
-                setFilteredCountries(filtered);
-            }
-        } catch (error) {
-            console.error('Error searching country:', error);
+
+    const searchCountry = (query) => {
+        if (!query) {
+            setFilteredCountries(countryData);
+        } else {
+            const filtered = countryData.filter(country =>
+                country.name.common.toLowerCase().includes(query.toLowerCase())
+            );
+            setFilteredCountries(filtered);
         }
     };
 
-    const filterByRegion = async (region) => {
-        try {
-            if (region === "All") {
-                setFilteredCountries(countryData);
-            } else {
-                const filtered = countryData.filter(country =>
-                    country.region.toLowerCase() === region.toLowerCase()
-                );
-                setFilteredCountries(filtered);
-            }
-        } catch (error) {
-            console.error('Error filtering countries by region:', error);
+    const filterByRegion = (region) => {
+        if (region === 'All') {
+            setFilteredCountries(countryData);
+        } else {
+            const filtered = countryData.filter(country =>
+                country.region.toLowerCase() === region.toLowerCase()
+            );
+            setFilteredCountries(filtered);
         }
     };
 
