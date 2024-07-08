@@ -42,7 +42,6 @@ function App() {
         setFilteredCountries(filtered);
     };
 
-    if (loading) return <div>Loading...</div>;
     if (error) return (
         <div>
             Error loading countries data: {error.message}
